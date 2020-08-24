@@ -116,6 +116,17 @@
 			}
 		},
 		{
+			"key": "target_event",
+			"name": "<b>Select target event</b>",
+			"required": false,
+			"allow-project-overrides": false,
+			"type": "event-list",
+			"branchingLogic": {
+				"field": "paper_trail_type",
+				"value": "ppt_1"
+			}
+		},
+		{
 			"key": "target_field",
 			"name": "<b>Select target upload field</b>",
 			"required": true,
@@ -281,6 +292,17 @@
 					"repeatable": true
 				},
 				{
+					"key": "multi_target_event",
+					"name": "<b>Select target event</b>",
+					"required": false,
+					"allow-project-overrides": false,
+					"type": "event-list",
+					"branchingLogic": {
+						"field": "paper_trail_type",
+						"value": "ppt_1"
+					}
+				},
+						{
 					"key": "multi_target_field",
 					"name": "<b>Select target upload field</b>",
 					"required": true,

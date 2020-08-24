@@ -105,11 +105,12 @@ if ($paper_trail_type == 'ppt_1') {
 
   $file_prefix = $module->getProjectSetting('file_prefix');
   $target_form = $Proj->metadata[$target_field]['form_name'];
+  $target_event = $module->getProjectSetting('target_event');
 
   $pdf_archival = $module->getProjectSetting('enable_survey_archive');
 
   // We should have everything we need at this point
-  generate_and_upload_pdf ( $Proj->project_id, $record, $pdf_these_forms, $target_field, $event_id, $target_form, $pk, $repeat_instance, $file_prefix, $form_status, "SYSTEM", $pdf_archival, $survey_id );
+  generate_and_upload_pdf ( $Proj->project_id, $record, $pdf_these_forms, $target_field, $target_event, $target_form, $pk, $repeat_instance, $file_prefix, $form_status, "SYSTEM", $pdf_archival, $survey_id );
 
   return; // We're done
 }
@@ -124,7 +125,8 @@ if ($paper_trail_type == 'ppt_2') {
 //    $target_field = $module->getProjectSetting('target_field');
     $target_field = $module->getProjectSetting('multi_target_field')[$k];
     $forms_in_project = array_keys($Proj->forms);
-//    foreach ( $module->getProjectSetting('pdf_form') as $f_c => $f ) {
+
+    //    foreach ( $module->getProjectSetting('pdf_form') as $f_c => $f ) {
     foreach ( $module->getProjectSetting('multi_pdf_form')[$k] as $f_c => $f ) {
         if ( in_array($f, $forms_in_project) ) {
             $pdf_these_forms[$f] = $f; // form is valid in this project - put it in an associative array so we de-duplicate
@@ -145,13 +147,14 @@ if ($paper_trail_type == 'ppt_2') {
 
 //    $file_prefix = $module->getProjectSetting('file_prefix');
     $file_prefix = $module->getProjectSetting('multi_file_prefix')[$k];
+    $target_event = $module->getProjectSetting('multi_target_event')[$k];
     $target_form = $Proj->metadata[$target_field]['form_name'];
 
 //    $pdf_archival = $module->getProjectSetting('enable_survey_archive');
     $pdf_archival = $module->getProjectSetting('multi_enable_survey_archive')[$k];
 
     // We should have everything we need at this point
-    generate_and_upload_pdf ( $Proj->project_id, $record, $pdf_these_forms, $target_field, $event_id, $target_form, $pk, $repeat_instance, $file_prefix, $form_status, "SYSTEM", $pdf_archival, $survey_id );
+    generate_and_upload_pdf ( $Proj->project_id, $record, $pdf_these_forms, $target_field, $target_event, $target_form, $pk, $repeat_instance, $file_prefix, $form_status, "SYSTEM", $pdf_archival, $survey_id );
 
     return; // We're done
 }
