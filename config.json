@@ -296,11 +296,7 @@
 					"name": "<b>Select target event</b>",
 					"required": false,
 					"allow-project-overrides": false,
-					"type": "event-list",
-					"branchingLogic": {
-						"field": "paper_trail_type",
-						"value": "ppt_1"
-					}
+					"type": "event-list"
 				},
 						{
 					"key": "multi_target_field",
