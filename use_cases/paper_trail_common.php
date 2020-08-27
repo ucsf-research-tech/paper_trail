@@ -385,28 +385,22 @@ function upload_file_to_pdf_archive ( $pdf_file_details, $pdf_edoc_id, $pdf_cont
   }
 
   try {
-    // Add slash to end of root path
-    $pathLastChar = substr($GLOBALS['pdf_econsent_filesystem_path'], -1);
-    if ($pathLastChar != "/" && $pathLastChar != "\\") {
-      $GLOBALS['pdf_econsent_filesystem_path'] .= "/";
-    }
 
-    $settings = array(
-      'baseUri' => $GLOBALS['pdf_econsent_filesystem_host'],
-      'userName' => $GLOBALS['pdf_econsent_filesystem_username'],
-      'password' => $GLOBALS['pdf_econsent_filesystem_password']
-    );
-    $client = new Sabre\DAV\Client($settings);
-    $adapter = new League\Flysystem\WebDAV\WebDAVAdapter($client, $GLOBALS['pdf_econsent_filesystem_path']);
-    // Instantiate the filesystem
-    $filesystem = new League\Flysystem\Filesystem($adapter);
-    // Write the file
-    $response = $filesystem->write($pdf_file_details['name'], $pdf_contents);
+
+    $response=\Files::writeFilePdfAutoArchiverToExternalServer( $pdf_file_details['name'], $pdf_contents);
     // Return boolean regarding success
+    Logging::logEvent(NULL, "", "OTHER", $record,
+      "PaperTrail - wrote  \"".$pdf_file_details['name']."\" to external storage \"",
+      "PaperTrail","", "",
+      "", true, null, null, false);
     return $response;
   }
   catch (Exception $e)
   {
+    Logging::logEvent(NULL, "", "OTHER", $record,
+      "PaperTrail - FAILED TO WRITE  \"".$pdf_file_details['name']."\" to external storage \"",
+      "PaperTrail","", "",
+      "", true, null, null, false);
     return false;
   }
 }
