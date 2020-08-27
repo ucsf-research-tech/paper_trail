@@ -27,7 +27,7 @@ class autoPdfUpload extends \ExternalModules\AbstractExternalModule
         if (self::getProjectSetting('hide_simple_use_case',$project_id) == true and
             strstr(PAGE,"ExternalModules/manager/project.php?pid=") and
             strlen(strstr(PAGE,"ExternalModules/manager/project.php?pid=")) > 0)
-        {
+        { 
             $script = <<<SCRIPT
 <script type="text/javascript">
 

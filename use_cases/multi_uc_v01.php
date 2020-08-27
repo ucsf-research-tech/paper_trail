@@ -18,13 +18,16 @@ global $Proj;
 //$target_field = $this->getProjectSetting('target_field'); // Input variable
 $target_field = $multi_target_field;
 $pdf_inst_list = $multi_pdf_form;
+$pdf_event_list = $multi_target_event;
+
+
 
 /* */
-$pdf_these_forms = array(); //$this->getProjectSetting('pdf_form');
+$pdf_these_forms = array(); //$this->getProjectSetting('pdf_form'); //TODO: Verify can hold events
 //$target_field = $this->getProjectSetting('target_field'); // Input variable
 
 $forms_in_project = array_keys($Proj->forms);
-foreach ( $pdf_inst_list as $f_c => $f ) {
+foreach ( $pdf_inst_list as $f_c => $f ) {  //TODO: Extend to include $pdf_event_list
     if ( in_array($f, $forms_in_project) ) {
         $pdf_these_forms[$f] = $f; // form is valid in this project - put it in an associative array so we de-duplicate
     }
