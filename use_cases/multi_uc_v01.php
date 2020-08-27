@@ -15,7 +15,6 @@ global $Proj;
 /**
  * Get the settings of this Multi-Use-case
  */
-//$target_field = $this->getProjectSetting('target_field'); // Input variable
 $target_field = $multi_target_field;
 $pdf_inst_list = $multi_pdf_form;
 $pdf_event_list = $multi_target_event;
@@ -23,10 +22,9 @@ $pdf_event_list = $multi_target_event;
 
 
 /* */
-$pdf_these_forms = array(); //$this->getProjectSetting('pdf_form'); //TODO: Verify can hold events
-//$target_field = $this->getProjectSetting('target_field'); // Input variable
+$pdf_these_forms = array();  //TODO: Verify can hold events
 
-$forms_in_project = array_keys($Proj->forms);
+$forms_in_project = array_keys($Proj->forms); //TODO: Replace with $proj->eventForms
 foreach ( $pdf_inst_list as $f_c => $f ) {  //TODO: Extend to include $pdf_event_list
     if ( in_array($f, $forms_in_project) ) {
         $pdf_these_forms[$f] = $f; // form is valid in this project - put it in an associative array so we de-duplicate
@@ -53,13 +51,9 @@ $url = $this->getUrl('auto_pdf_service.php')."&NOAUTH&pid=". $project_id;
  * C2 -> Controlled - Depends on a Yes/No field
  * 99 -> Disabled
  */
-//$upload_type = $this->getProjectSetting('upload_type');
 $upload_type = $multi_upload_type;
-//$file_prefix = $this->getProjectSetting('file_prefix');
 $file_prefix = $multi_file_prefix;
-//$server_side_processing = $this->getProjectSetting('enable_cron');
 $server_side_processing = $multi_enable_cron;
-//$form_status = $this->getProjectSetting('complete_stat');
 $form_status = $multi_complete_stat;
 $k_index = $k;
 
@@ -70,7 +64,6 @@ if ( !in_array($form_status, $allowed_form_status) )
 $pk = $Proj->table_pk;
 $target_form = $Proj->metadata[$target_field]['form_name'];
 
-//$enable_survey_archive = $this->getProjectSetting('enable_survey_archive');
 $enable_survey_archive = $multi_enable_survey_archive;
 
 $survey_id = -1;
@@ -91,7 +84,6 @@ if ( $enable_survey_archive ) {
 switch ($upload_type) {
     case 'C1':
 
-//        $not_null_fields = $this->getProjectSetting('not_null_fields');
         $not_null_fields = $multi_not_null_fields;
         // Check to see if the PDF generating condition is true
         if ( PAGE == 'surveys/index.php' ){
@@ -114,7 +106,7 @@ switch ($upload_type) {
         break;
 
     case 'C2':
-//        $trigger_field = $this->getProjectSetting('trigger_field');
+
         $trigger_field = $multi_trigger_field;
         // Check to see if the PDF generating condition is true
         if ( PAGE == 'surveys/index.php' ){

@@ -122,18 +122,16 @@ if ($paper_trail_type == 'ppt_2') {
     $k = trim(strip_tags(html_entity_decode($_POST['ss_multi_k'], ENT_QUOTES)));
 
     $pdf_these_forms = array(); //$module->getProjectSetting('pdf_form');
-//    $target_field = $module->getProjectSetting('target_field');
     $target_field = $module->getProjectSetting('multi_target_field')[$k];
     $forms_in_project = array_keys($Proj->forms);
 
-    //    foreach ( $module->getProjectSetting('pdf_form') as $f_c => $f ) {
       //TODO: Add $multi_target_event lookup  
       foreach ( $module->getProjectSetting('multi_pdf_form')[$k] as $f_c => $f ) {
         if ( in_array($f, $forms_in_project) ) {
             $pdf_these_forms[$f] = $f; // form is valid in this project - put it in an associative array so we de-duplicate
         }
     }
-//    $form_status = $module->getProjectSetting('complete_stat');
+
     $form_status = $module->getProjectSetting('multi_complete_stat')[$k];
     $allowed_form_status = array ("0","1","2");
     if ( !in_array($form_status, $allowed_form_status) )
@@ -146,13 +144,11 @@ if ($paper_trail_type == 'ppt_2') {
     if ( !isset($Proj->metadata[$target_field]) )
         return exit('[]'); // nothing to do
 
-//    $file_prefix = $module->getProjectSetting('file_prefix');
     $file_prefix = $module->getProjectSetting('multi_file_prefix')[$k];
     $target_event = $module->getProjectSetting('multi_target_event')[$k];
 
     $target_form = $Proj->metadata[$target_field]['form_name'];
 
-//    $pdf_archival = $module->getProjectSetting('enable_survey_archive');
     $pdf_archival = $module->getProjectSetting('multi_enable_survey_archive')[$k];
 
     // We should have everything we need at this point
