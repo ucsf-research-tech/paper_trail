@@ -1,0 +1,307 @@
+{
+	"name": "Configuration Example",
+
+	"namespace": "Vanderbilt\\ConfigurationExampleExternalModule",
+
+	"framework-version": 4,
+
+	"description": "Example module to show off all the options available",
+
+	"documentation": "README.md",
+
+	"authors": [
+		{
+			"name": "Kyle McGuffin",
+			"email": "kyle.mcguffin@vumc.org",
+			"institution": "Vanderbilt University Medical Center"
+		}
+	],
+
+	"permissions": [
+		""
+	],
+
+	"enable-every-page-hooks-on-system-pages": false,
+
+	"links": {
+		"project": [
+			{
+				"name": "Configuration Page",
+				"icon": "fas fa-file",
+				"url": "configure.php",
+				"show-header-and-footer": true
+			}
+		],
+		"control-center": [
+			{
+				"name": "Example Module Control Center Page",
+				"icon": "fas fa-file",
+				"url": "control-center-page.php",
+				"show-header-and-footer": true
+			}
+		]
+	},
+
+	"no-auth-pages": [
+        "public-page"
+	],
+	
+	"compatibility": {
+		"redcap-version-min": "8.0.0",
+		"php-version-min": "5.5.0"
+    },
+
+	"system-settings": [
+		{
+			"key": "system-text",
+			"name": "System Text",
+			"type": "text"
+		},
+		{
+			"key": "branching-logic-example-1",
+			"name": "Visible When System Text is '1'",
+			"type": "text",
+			"branchingLogic": {
+				"field": "system-text",
+				"value": 1
+			}
+		},
+		{
+			"key": "system-file",
+			"name": "System Upload",
+			"required": false,
+			"type": "file",
+			"repeatable": false
+		},
+		{
+			"key": "system-checkbox",
+			"name": "System Checkbox",
+			"required": false,
+			"type": "checkbox",
+			"repeatable": false
+		},
+		{
+			"key": "system-project",
+			"name": "Project",
+			"required": false,
+			"type": "project-id",
+			"repeatable": false
+		},
+		{
+			"key": "test-list",
+			"name": "List of Sub Settings",
+			"required": true,
+			"type": "sub_settings",
+			"repeatable":true,
+			"sub_settings":[
+				{
+					"key": "system_project_sub",
+					"name": "System Project",
+					"required": true,
+					"type": "project-id"
+				},
+				{
+					"key": "system_project_text",
+					"name": "Sub Text Field",
+					"required": true,
+					"type": "text"
+				}
+			]
+		}
+	],
+
+	"project-settings": [
+		{
+			"key": "descriptive-field",
+			"name": "This is just a descriptive field with only static text and no input field.",
+			"type": "descriptive"
+		},
+		{
+			"key": "custom-field1",
+			"name": "Custom Field 1",
+			"type": "custom",
+			"source": "js/test_javascript.js",
+			"functionName": "ExternalModulesOptional.customTextAlert"
+		},
+		{
+			"key": "custom-field2",
+			"name": "Custom Field 2",
+			"type": "custom",
+			"source": "extra_types.js",
+			"functionName": "ExternalModulesOptional.addColorToText"
+		},
+		{
+			"key": "test-list2",
+			"name": "List of Sub Settings",
+			"required": true,
+			"type": "sub_settings",
+			"repeatable":true,
+			"sub_settings":[
+				{
+				"key": "form-name",
+				"name": "Form name",
+				"required": true,
+				"type": "form-list"
+				},
+				{
+					"key": "arm-name",
+					"name": "Arm name",
+					"required": true,
+					"type": "arm-list"
+				},
+				{
+					"key": "event-name",
+					"name": "Event name",
+					"required": true,
+					"type": "event-list"
+				},
+				{
+					"key": "test-text",
+					"name": "Text Field",
+					"required": true,
+					"type": "text"
+				},
+				{
+					"key": "test-date",
+					"name": "Date Field",
+					"type": "date"
+				},
+				{
+					"key": "test-email",
+					"name": "Email Field",
+					"type": "email"
+				}
+			]
+		},
+		{
+			"key": "text-area",
+			"name": "Text Area",
+			"required": true,
+			"type": "textarea",
+			"repeatable": true
+		},
+		{
+			"key": "rich-text-area",
+			"name": "Rich Text Area",
+			"type": "rich-text"
+		},
+		{
+			"key": "field",
+			"name": "Field",
+			"required": false,
+			"type": "field-list",
+			"repeatable": false
+		},
+		{
+			"key": "dag",
+			"name": "Data Access Group",
+			"required": false,
+			"type": "dag-list",
+			"repeatable": false
+		},
+		{
+			"key": "user",
+			"name": "Users",
+			"required": false,
+			"type": "user-list",
+			"repeatable": false
+		},
+		{
+			"key": "user-role",
+			"name": "User Role",
+			"required": false,
+			"type": "user-role-list",
+			"repeatable": false
+		},
+		{
+			"key": "file",
+			"name": "File Upload",
+			"required": false,
+			"type": "file",
+			"repeatable": false
+		},
+		{
+			"key": "checkbox",
+			"name": "Test Checkbox",
+			"required": false,
+			"type": "checkbox",
+			"repeatable": false
+		},
+		{
+			"key": "dropdown",
+			"name": "Dropdown",
+			"type": "dropdown",
+			"choices":[
+				{
+					"name" : "Option 1",
+					"value" : "1"
+				},
+				{
+					"name" : "Option 2",
+					"value" : "2"
+				}
+			]
+		},
+		{
+			"key": "dropdown-autocomplete",
+			"name": "Dropdown With Autocomplete",
+			"type": "dropdown",
+			"autocomplete": true,
+			"choices":[
+				{
+					"name" : "Option 1",
+					"value" : "1"
+				},
+				{
+					"name" : "Option 2",
+					"value" : "2"
+				}
+			]
+		},
+		{
+			"key": "radio",
+			"name": "Test Radio",
+			"required": false,
+			"type": "radio",
+			"choices":[
+				{
+					"name" : "My Radio 1",
+					"value" : "1"
+				},
+				{
+					"name" : "My Radio 2",
+					"value" : "2"
+				}
+			],
+			"repeatable": false
+		},
+		{
+			"key": "button",
+			"name": "Test Button",
+			"type": "button",
+			"url":
+			{
+				"name": "Click here",
+				"value": "url-button-page.php"
+			}
+		},
+		{
+			"key": "project",
+			"name": "Other Project",
+			"required": false,
+			"type": "project-id",
+			"repeatable": false
+		},
+		{
+			"key": "super-users-only",
+			"name": "For Super Users Only",
+			"type": "text",
+			"super-users-only": true
+		},
+		{
+			"key": "color-picker",
+			"name": "Color Picker",
+			"type": "color-picker"
+		}
+	]
+}

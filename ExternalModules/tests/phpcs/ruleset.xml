@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<ruleset name="ExternalModules">
+    <description>The External Modules Framework coding standard.</description>
+    <autoload>./../../redcap_connect.php</autoload>
+</ruleset>

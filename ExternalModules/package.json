@@ -1,0 +1,16 @@
+{
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vanderbilt/redcap-external-modules.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-compat": "^3.8.0"
+  },
+  "browserslist": [
+    "defaults",
+    "ie 11"
+  ]
+}

@@ -1,0 +1,22 @@
+html{
+	background-color: whitesmoke;
+}
+
+body{
+	max-width: 910px;
+	margin-right: auto;
+	margin-left: auto;
+	border: 1px solid #d1d5da;
+	border-radius: 2px;
+	background-color: white;
+	padding: 30px 50px;
+}
+
+li{
+	margin-bottom: 5px;
+}
+
+ul{
+	margin-top: 5px;
+	margin-bottom: 7px;
+}

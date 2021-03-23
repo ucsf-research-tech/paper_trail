@@ -1,0 +1,48 @@
+{
+	"project-settings": [
+		{
+			"key": "countries",
+			"name": "Country",
+			"type": "sub_settings",
+			"repeatable": true,
+			"sub_settings": [
+				{
+					"key": "states",
+					"name": "State",
+					"type": "sub_settings",
+					"repeatable": true,
+					"sub_settings": [
+						{
+							"key": "state-name",
+							"name": "State Name",
+							"type": "text"
+						},
+						{
+							"key": "cities",
+							"name": "City",
+							"type": "sub_settings",
+							"repeatable": true,
+							"sub_settings": [
+								{
+									"key": "city-name",
+									"name": "City Name",
+									"type": "text"
+								},
+								{
+									"key": "city-size",
+									"name": "City Size",
+									"type": "text"
+								}
+							]
+						}
+					]
+				},
+				{
+					"key": "country-name",
+					"name": "Country Name (on the bottom just to test a different order)",
+					"type": "text"
+				}
+			]
+		}
+	]
+}

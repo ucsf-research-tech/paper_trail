@@ -1,0 +1,10 @@
+{
+    "require-dev": {
+        "phpcompatibility/php-compatibility": "^9"
+    },
+    "config": {
+        "platform": {
+            "php": "5.6.1"
+        }
+    }
+}

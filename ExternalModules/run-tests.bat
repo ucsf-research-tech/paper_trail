@@ -1,0 +1,1 @@
+@echo On Windows, please run tests from cygwin or Windows Subsystem for Linux.  They're not all compatible with the windows command prompt.
