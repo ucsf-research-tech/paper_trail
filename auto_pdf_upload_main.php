@@ -26,6 +26,7 @@ if ($paper_trail_type == 'ppt_2') {
         $multi_enable_cron = $this->getProjectSetting('multi_enable_cron')[$k];                         // Done
         $multi_pdf_form = $this->getProjectSetting('multi_pdf_form')[$k];                               // Done
         $multi_target_field = $this->getProjectSetting('multi_target_field')[$k];                       // Done
+        $multi_event_name = $this::getProjectSetting('multi_event_name')[$k];                           // Done
         $multi_complete_stat = $this->getProjectSetting('multi_complete_stat')[$k];                     // Done
         $multi_file_prefix = $this->getProjectSetting('multi_file_prefix')[$k];                         // Done
         $multi_enable_survey_archive = $this->getProjectSetting('multi_enable_survey_archive')[$k];     // Done

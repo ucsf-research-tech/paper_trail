@@ -288,6 +288,13 @@
 					"type": "field-list"
 				},
 				{
+					"key": "multi_event_name",
+					"name": "<b>Select Event Name</b> <br><i>leave this blank if your project is not longitudinal</i></br>",
+					"required": false,
+					"allow-project-overrides": false,
+					"type": "event-list"
+				},
+				{
 					"key": "multi_complete_stat",
 					"name": "<b>Set the target form status to</b>",
 					"required": true,

@@ -6,7 +6,6 @@ use \REDCap as REDCap;
 use \Files as Files;
 include_once dirname(__FILE__)."/classes/common.php";
 
-
 class autoPdfUpload extends \ExternalModules\AbstractExternalModule
 {
     function redcap_save_record($project_id, $record, $instrument, $event_id, $group_id, $survey_hash, $response_id, $repeat_instance)
@@ -28,7 +27,7 @@ class autoPdfUpload extends \ExternalModules\AbstractExternalModule
             strstr(PAGE,"ExternalModules/manager/project.php?pid=") and
             strlen(strstr(PAGE,"ExternalModules/manager/project.php?pid=")) > 0)
         {
-            $script = <<<SCRIPT
+            $script_longitudinal = <<<SCRIPT
 <script type="text/javascript">
 
  document.addEventListener("DOMNodeInserted", function(event){
@@ -44,7 +43,29 @@ class autoPdfUpload extends \ExternalModules\AbstractExternalModule
 });
             </script>
 SCRIPT;
-//                    Adding only action tags to the Action Tag Description Window
+
+            $script_non_longitudinal = <<<SCRIPT
+<script type="text/javascript">
+
+ document.addEventListener("DOMNodeInserted", function(event){
+    var element = event.target;
+    if (element.tagName == 'TR') {       
+         if (typeof element.attributes.field !== 'undefined'){             
+          if(element.getAttribute("field") == "multi_uc_instance"){                
+                $(".external-modules-input-td input[type='radio'][name='paper_trail_type'][value='ppt_1']").hide();
+                $(".external-modules-input-td input[type='radio'][name='paper_trail_type'][value='ppt_1'] ").next().hide();
+                $('table').find('tr[field="multi_event_name"]').dialog({ autoOpen: false });
+                }
+         }
+    }
+    
+});
+            </script>
+SCRIPT;
+
+            global $Proj;
+            $script = $Proj->longitudinal == TRUE ? $script_longitudinal : $script_non_longitudinal;
+
             print $script;
         }
     }

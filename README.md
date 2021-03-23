@@ -1,16 +1,18 @@
-# Paper Trail External Module v1.3.3
+# Paper Trail External Module v1.3.5
 ---------------------------------------------------------------------------------------
 
 ### Brief summary
 The goal of this external module (ext-mod) is to streamline the creation of pdf files in REDCap when it needs to be automatically attached to an upload field in the same project. 
 In it simplest form, it can create a pdf-version of a pre-determined REDCap instrument, when specific fields have been completed. 
 You have full control over which fields must be completed before the pdf file is created, as well as selecting the desired upload field. 
-It also contains a feature that allows you to control when to attach the pdf-file to an upload field by answering one single Yes/No field. 
 Additionally, the ext-mod wouldn't be complete without a feature to remove the label "remove file and send it" from the upload field, 
 and server side processing of large pdf files (recommended for instruments with in-line images). 
 Finally, you can use its multi use-case functionality to defined several conditions, each generating their respective pdf file.
 
 ----------------------------------------------------------------------------------------------
+### New feature --  Select the longitudinal event containing the upload field to which the PDF file must be attached to.  
+* For longitudinal studies, you must specify which event the upload field receiving the PDF file is located.
+
 ### New feature -- Merge several instruments into a single PDF file: 
 * The module now allows for specifying one or more instruments to be merged into a single PDF file; this is particularly useful when
 signatures are captured in different instruments, at different times, and a record is needed of when the final/completed document was finally captured.
@@ -21,6 +23,7 @@ signatures are captured in different instruments, at different times, and a reco
 
 ### New feature --  Store PDF copy in PDF Survey Archival Tab: 
 * Store a copy of the generated document in the PDF Survey Archival section, found in the File Repository (*Requires that surveys be used/configured in this project*)
+
 
 ---------------------------------------------------------------------------------------
 
@@ -40,22 +43,23 @@ Please note that both use-cases are configured in the exact same way. The differ
 1. Enable/disable Server-Side PDF processing
 2. Name of the instrument(s) expected to be saved in pdf format
 3. Upload (target) field receiving the pdf file from step #4
-4. Specify the form status to which the target field's form should be set after receiving the pdf file
-5. Prefix of pdf file name from step #5; it will be concatenated to system constants i.e. prefix_project_id_record_id_date_time.pdf
-6. Enable/disable storing a copy of the generated document in the PDF Survey Archival section, found in the File Repository (*Requires that surveys be used/configured in this project*)
-7. Type of upload:
+4. Specify the arm in which the (target) upload field, from step #3, is to be found (required for longitudinal projects that have defined events)
+5. Specify the form status to which the target field's form should be set after receiving the pdf file
+6. Prefix of pdf file name from step #5; it will be concatenated to system constants i.e. prefix_project_id_record_id_date_time.pdf
+7. Enable/disable storing a copy of the generated document in the PDF Survey Archival section, found in the File Repository (*Requires that surveys be used/configured in this project*)
+8. Type of upload:
     8. Automatic file upload after all specified fields have been answered
-    9. Controlled by a single Yes/No field triggering the upload
+    9. Controlled by a single Yes/No field triggering the upload - (not available - deprecated)
     10. Disable configuration for resetting selection in case troubleshooting is needed
 11. Hide the "Remove File" and "Send it" from Target Upload Field
 
 ## Future Enhancements:
-1. Provide compatibility with longitudinal REDCap projects
-2. Enhance multiple use-case with a logic box for allowing complex conditions to be entered using REDCap's pseudo-code.
+1. Enhance multiple use-case with a logic box for allowing complex conditions to be entered using REDCap's pseudo-code.
 2. Provide control over which links are hidden in the upload fields
 3. Add functionality to allow more than one target field
 4. Add functionality to toggle REDCap Logo off the pdf file straight from the Ext-Mod
 5. Prevent overwriting the pdf file if the triggering condition is met a subsequent time
+6. Simplify the config's drop down choices, by removing unnecessary fields from its list (i.e. show only upload fields for target upload field drop down menu)
 
 ## Envisioned, Designed, and Developed by:
 * [Lynn Sympson](https://community.projectredcap.org/users/27/lynnsimpson.html)
